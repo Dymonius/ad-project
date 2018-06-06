@@ -26,5 +26,11 @@ new Vue({
       storageBucket: 'itc-ad-project.appspot.com',
       messagingSenderId: '1002032439285'
     })
+
+    fb.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch('autoLoginUser', user)
+      }
+    })
   }
 })
