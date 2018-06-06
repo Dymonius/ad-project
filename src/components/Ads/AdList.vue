@@ -5,7 +5,7 @@
         <h1 class="text--secondary mb3">AdList</h1>
         <v-card
           class="elevation-10 mb-3"
-          v-for="ad in ads"
+          v-for="ad in myAds"
           :key="ad.id"
         >
           <v-layout row>
@@ -25,7 +25,8 @@
                 <v-btn
                   class="info"
                   :to="'/ad/' + ad.id"
-                >Open</v-btn>
+                >Open
+                </v-btn>
               </v-card-actions>
             </v-flex>
           </v-layout>
@@ -37,17 +38,9 @@
 
 <script>
   export default {
-    data () {
-      return {
-        ads: [
-          {
-            title: 'First ad',
-            description: 'Hello i am description',
-            promo: false,
-            imageSrc: 'https://vuetifyjs.com/static/doc-images/carousel/planet.jpg',
-            id: '123'
-          }
-        ]
+    computed: {
+      myAds () {
+        return this.$store.getters.myAds
       }
     }
   }
